@@ -14,6 +14,8 @@ def check(
 	coneT: float,
 	minSize: float,
 	maxSize: float,
+	endTime: float,
+	deltaT: float,
 ) -> Tuple[bool, str]:
 	if U <= 0 or widthInput <= 0 or widthOutput <= 0 or sideTriangle <= 0 or lenCone <= 0 or widthBase <= 0 or ten <0 or coneT <0:
 		return False, "Все значения должны быть >0"
@@ -40,13 +42,14 @@ def check(
 		"distanceToTriangle": str(ten),
 		"angle": "11",
 		"gap": str(coneT),
-		"minSize": str(minSize),
-		"maxSize": str(maxSize),
+		"minSize": minSize,
+		"maxSize": maxSize,
 	}
 
 	with open('data.json', 'w') as file:
 		json.dump(result, file, indent=4)
 	change_inlet_velocity(U)
+	update_control_dict(endTime, deltaT)
 	return True, "Параметры корректны. Запуск расчёта..."
 
 
@@ -62,3 +65,24 @@ def change_inlet_velocity(new_x_velocity: float = 1, file_path: str = "0/U"):
 
 	with open(file_path, 'w') as file:
 		file.write(new_content)
+
+def update_control_dict(endTime: float = 25, deltaT: float = 0.05, file_path: str = "system/controlDict"):
+	with open(file_path, 'r') as f:
+		content = f.read()
+	
+	content = re.sub(
+		r'(endTime\s+)\d+\.?\d*;',
+		rf'\g<1>{endTime};',
+		content
+	)
+	
+	content = re.sub(
+		r'(deltaT\s+)\d+\.?\d*;',
+		rf'\g<1>{deltaT};',
+		content
+	)
+	
+	with open(file_path, 'w') as f:
+		f.write(content)
+		
+	print(f"Успешно обновлено: endTime = {endTime}, deltaT = {deltaT}")

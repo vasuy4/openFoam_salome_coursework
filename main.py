@@ -21,6 +21,7 @@ async def main_page(request: Request):
 
 @app.post("/run")
 async def run(request: Request):
+    subprocess.run(['sh', 'Clean.sh'])
     subprocess.run(['sh', 'Run.sh'])
     return templates.TemplateResponse(
         "index.html",
@@ -48,6 +49,8 @@ async def calculate(
     coneT: float = Form(...),
     minSize: float = Form(...),
     maxSize: float = Form(...),
+    endTime: float = Form(...),
+    deltaT: float = Form(...),
 ):
     result = {
         "U": U,
@@ -60,6 +63,8 @@ async def calculate(
         "coneT": coneT,
         "minSize": minSize,
         "maxSize": maxSize,
+        "endTime": endTime,
+        "deltaT": deltaT
     }
 
     check_answer = check(*result.values())
