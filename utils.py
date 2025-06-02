@@ -1,4 +1,5 @@
 from typing import  Tuple
+import re
 
 def check(
 	U: float,
@@ -26,5 +27,19 @@ def check(
 	if sideTriangle >= lenCone:
 		return False, "t должно быть меньше L"
 
-
+	change_inlet_velocity(U)
 	return True, "Параметры корректны. Запуск расчёта..."
+
+
+def change_inlet_velocity(new_x_velocity: float = 1, file_path: str = "0/U"):
+	"""Изменяет значение скорости на входе (inlet) в файле U OpenFOAM"""
+	with open(file_path, 'r') as file:
+		content = file.read()
+
+	# Ищем и заменяем значение скорости в inlet
+	pattern = r'(inlet\s*\{[^}]*value\s*uniform\s*\()(\d+\.?\d*)(\s+0\s+0\);)'
+	replacement = fr'\g<1>{new_x_velocity}\g<3>'
+	new_content = re.sub(pattern, replacement, content, flags=re.DOTALL)
+
+	with open(file_path, 'w') as file:
+		file.write(new_content)
