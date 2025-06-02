@@ -1,4 +1,3 @@
-import subprocess
 from typing import  Tuple
 
 def check(
@@ -27,23 +26,5 @@ def check(
 	if sideTriangle >= lenCone:
 		return False, "t должно быть меньше L"
 
-	with open('params.txt', 'w') as params_file:
-		params_file.writelines((
-			'widthInput\n',
-			f'{widthInput}\n\n',
-			'widthOutput\n',
-			f'{widthOutput}\n\n',
-			'lenCone\n',
-			f'{lenCone}\n\n',
-			'widthBase\n',
-			f'{widthBase}\n\n',
-			'sideTriangle\n',
-			f'{sideTriangle}\n\n',
-			'ten\n',
-			f'{ten}\n\n',
-			'coneT\n',
-			str(coneT),
-		))
 
-	subprocess.run(['sh', 'ChangeParams.sh'])
 	return True, "Параметры корректны. Запуск расчёта..."
