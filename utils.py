@@ -50,7 +50,7 @@ def check(
 		json.dump(result, file, indent=4)
 	change_inlet_velocity(U)
 	update_control_dict(endTime, deltaT)
-	return True, "Параметры корректны. Запуск расчёта..."
+	return True, "Параметры корректны. Можно запускать"
 
 
 def change_inlet_velocity(new_x_velocity: float = 1, file_path: str = "0/U"):
