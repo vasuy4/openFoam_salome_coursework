@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Расчет параметров</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        img {
+            width: 100%;
+            max-width: 700px;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="/static/images/image.png" alt="Расчетная схема">
+
+        <form method="post" action="/calculate">
+            <div class="input-group">
+                <label for="U">Скорость U:</label>
+                <input type="text" id="U" name="U">
+            </div>
+
+            <div class="input-group">
+                <label for="widthInput">Ширина входа wi:</label>
+                <input type="text" id="widthInput" name="widthInput">
+            </div>
+
+            <div class="input-group">
+                <label for="widthOutput">Ширина выхода wo:</label>
+                <input type="text" id="widthOutput" name="widthOutput">
+            </div>
+
+            <div class="input-group">
+                <label for="sideTriangle">Сторона треугольника t:</label>
+                <input type="text" id="sideTriangle" name="sideTriangle">
+            </div>
+
+            <div class="input-group">
+                <label for="lenCone">L:</label>
+                <input type="text" id="lenCone" name="lenCone">
+            </div>
+
+            <div class="input-group">
+                <label for="widthBase">wb:</label>
+                <input type="text" id="widthBase" name="widthBase">
+            </div>
+
+            <div class="input-group">
+                <label for="ten">bt:</label>
+                <input type="text" id="ten" name="ten">
+            </div>
+
+            <div class="input-group">
+                <label for="coneT">ct:</label>
+                <input type="text" id="coneT" name="coneT">
+            </div>
+
+            <button type="submit">Рассчитать</button>
+        </form>
+    </div>
+</body>
+</html>
