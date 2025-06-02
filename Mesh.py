@@ -6,6 +6,8 @@
 
 import sys
 import salome
+import json
+import os
 
 salome.salome_init()
 import salome_notebook
@@ -26,14 +28,16 @@ partSet = model.moduleDocument()
 ### Create Part
 Part_1 = model.addPart(partSet)
 Part_1_doc = Part_1.document()
-model.addParameter(Part_1_doc, "heightS", '33')
-model.addParameter(Part_1_doc, "heightB", '55')
-model.addParameter(Part_1_doc, "widthL", '66')
-model.addParameter(Part_1_doc, "widthR", '22')
-model.addParameter(Part_1_doc, "angle", '11')
-model.addParameter(Part_1_doc, "triangle", '6')
-model.addParameter(Part_1_doc, "gap", '3')
-model.addParameter(Part_1_doc, "distanceToTriangle", '15')
+with open(os.path.expanduser("~/Downloads/kurs_lyas/data.json"), "r") as file:
+    data = json.load(file)
+    model.addParameter(Part_1_doc, "heightS", data["heightS"])
+    model.addParameter(Part_1_doc, "heightB", data["heightS"])
+    model.addParameter(Part_1_doc, "widthL", data["widthL"])
+    model.addParameter(Part_1_doc, "widthR", data["widthR"])
+    model.addParameter(Part_1_doc, "angle", data["angle"])
+    model.addParameter(Part_1_doc, "triangle", data["triangle"])
+    model.addParameter(Part_1_doc, "gap", data["gap"])
+    model.addParameter(Part_1_doc, "distanceToTriangle", data["distanceToTriangle"])
 
 ### Create Sketch
 Sketch_1 = model.addSketch(Part_1_doc, model.defaultPlane("XOY"))
