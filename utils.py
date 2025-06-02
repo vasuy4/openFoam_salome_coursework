@@ -32,15 +32,16 @@ def check(
 		return False, "t должно быть меньше L"
 
 	result = {
-		"heightS": widthInput,
-		"heightB": widthOutput,
-		"triangle": sideTriangle,
-		"widthL": lenCone,
-		"widthR": widthBase,
-		"distanceToTriangle": ten,
-		"gap": coneT,
-		"minSize": minSize,
-		"maxSize": maxSize,
+		"heightS": str(widthInput),
+		"heightB": str(widthOutput),
+		"triangle": str(sideTriangle),
+		"widthL": str(lenCone),
+		"widthR": str(widthBase),
+		"distanceToTriangle": str(ten),
+		"angle": "11",
+		"gap": str(coneT),
+		"minSize": str(minSize),
+		"maxSize": str(maxSize),
 	}
 
 	with open('data.json', 'w') as file:

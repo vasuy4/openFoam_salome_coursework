@@ -41,8 +41,16 @@ with open(os.path.expanduser("~/Downloads/artem/data.json"), "r") as file:
     model.addParameter(Part_1_doc, "gap", data["gap"])
     model.addParameter(Part_1_doc, "distanceToTriangle", data["distanceToTriangle"])
     minSize = data["minSize"]
-    maxSize = data["minSize"]
+    maxSize = data["maxSize"]
 
+# model.addParameter(Part_1_doc, "heightS", '33')
+# model.addParameter(Part_1_doc, "heightB", '55')
+# model.addParameter(Part_1_doc, "widthL", '66')
+# model.addParameter(Part_1_doc, "widthR", '22')
+# model.addParameter(Part_1_doc, "angle", '11')
+# model.addParameter(Part_1_doc, "triangle", '6')
+# model.addParameter(Part_1_doc, "gap", '3')
+# model.addParameter(Part_1_doc, "distanceToTriangle", '15')
 ### Create Sketch
 Sketch_1 = model.addSketch(Part_1_doc, model.defaultPlane("XOY"))
 
@@ -203,8 +211,8 @@ smesh = smeshBuilder.New()
 Mesh_1 = smesh.Mesh(Extrusion_1_1,'Mesh_1')
 NETGEN_1D_2D_3D = Mesh_1.Tetrahedron(algo=smeshBuilder.NETGEN_1D2D3D)
 NETGEN_3D_Parameters_1 = NETGEN_1D_2D_3D.Parameters()
-NETGEN_3D_Parameters_1.SetMaxSize( 3 )
-NETGEN_3D_Parameters_1.SetMinSize( 0.5 )
+NETGEN_3D_Parameters_1.SetMaxSize( maxSize )
+NETGEN_3D_Parameters_1.SetMinSize( minSize )
 NETGEN_3D_Parameters_1.SetSecondOrder( 0 )
 NETGEN_3D_Parameters_1.SetOptimize( 1 )
 NETGEN_3D_Parameters_1.SetFineness( 2 )

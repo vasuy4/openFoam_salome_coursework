@@ -1,12 +1,12 @@
 {
-  "heightS": "33",
-  "heightB": "55",
-  "widthL": "66",
-  "widthR": "22",
-  "angle": "11",
-  "triangle": "6",
-  "gap": "3",
-  "distanceToTriangle": "15",
-  "minSize": "0.5",
-  "maxSize": "3"
+    "heightS": "33.0",
+    "heightB": "55.0",
+    "triangle": "6.0",
+    "widthL": "30.0",
+    "widthR": "22.0",
+    "distanceToTriangle": "15.0",
+    "angle": "11",
+    "gap": "3.0",
+    "minSize": "0.1",
+    "maxSize": "1.0"
 }
