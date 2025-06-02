@@ -2,62 +2,7 @@
 <html>
 <head>
     <title>Расчет параметров</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .input-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        img {
-            width: 100%;
-            max-width: 700px;
-            margin-bottom: 20px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        h1 {
-            width: 100%;
-            text-align: center;
-        }
-        button {
-            padding: 14px 32px;
-            margin-top: 2px;
-            font-size: 18px;
-            color: #fff;
-            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
-            border: none;
-            border-radius: 30px;
-            box-shadow: 0 4px 20px rgba(40, 80, 220, 0.2);
-            cursor: pointer;
-            outline: none;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-        button:hover, button:focus {
-            background: linear-gradient(90deg, #2575fc 0%, #6a11cb 100%);
-            transform: translateY(-2px) scale(1.04);
-            box-shadow: 0 8px 28px rgba(40, 80, 220, 0.3);
-        }
-    </style>
+    <link href="/static/styles/index.css" rel="stylesheet">
 </head>
 <body>
     <h1 id="information">{{ information }}</h1>
@@ -71,66 +16,56 @@
         <img src="/static/images/image.png" alt="Расчетная схема">
 
         <form method="post" action="/calculate">
-            <div class="input-group">
-                <label for="U">Скорость U:</label>
-                <input type="text" id="U" name="U" value="1">
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="U">Скорость U:</label>
+                    <input type="text" id="U" name="U" value="1">
+                </div>
+                <div class="input-group">
+                    <label for="widthInput">Ширина входа wi:</label>
+                    <input type="text" id="widthInput" name="widthInput" value="33">
+                </div>
+                <div class="input-group">
+                    <label for="widthOutput">Ширина выхода wo:</label>
+                    <input type="text" id="widthOutput" name="widthOutput" value="55">
+                </div>
+                <div class="input-group">
+                    <label for="sideTriangle">Сторона треугольника t:</label>
+                    <input type="text" id="sideTriangle" name="sideTriangle" value="6">
+                </div>
+                <div class="input-group">
+                    <label for="lenCone">L:</label>
+                    <input type="text" id="lenCone" name="lenCone" value="66">
+                </div>
+                <div class="input-group">
+                    <label for="widthBase">wb:</label>
+                    <input type="text" id="widthBase" name="widthBase" value="22">
+                </div>
+                <div class="input-group">
+                    <label for="ten">bt:</label>
+                    <input type="text" id="ten" name="ten" value="15">
+                </div>
+                <div class="input-group">
+                    <label for="coneT">ct:</label>
+                    <input type="text" id="coneT" name="coneT" value="3">
+                </div>
+                <div class="input-group">
+                    <label for="maxSize">MaxSize parameters:</label>
+                    <input type="text" id="maxSize" name="maxSize" value="3">
+                </div>
+                <div class="input-group">
+                    <label for="minSize">MinSize parameters:</label>
+                    <input type="text" id="minSize" name="minSize" value="0.5">
+                </div>
+                <div class="input-group">
+                    <label for="endTime">endTime:</label>
+                    <input type="text" id="endTime" name="endTime" value="25">
+                </div>
+                <div class="input-group">
+                    <label for="deltaT">deltaT:</label>
+                    <input type="text" id="deltaT" name="deltaT" value="0.05">
+                </div>
             </div>
-
-            <div class="input-group">
-                <label for="widthInput">Ширина входа wi:</label>
-                <input type="text" id="widthInput" name="widthInput" value="33">
-            </div>
-
-            <div class="input-group">
-                <label for="widthOutput">Ширина выхода wo:</label>
-                <input type="text" id="widthOutput" name="widthOutput" value="55">
-            </div>
-
-            <div class="input-group">
-                <label for="sideTriangle">Сторона треугольника t:</label>
-                <input type="text" id="sideTriangle" name="sideTriangle" value="6">
-            </div>
-
-            <div class="input-group">
-                <label for="lenCone">L:</label>
-                <input type="text" id="lenCone" name="lenCone" value="66">
-            </div>
-
-            <div class="input-group">
-                <label for="widthBase">wb:</label>
-                <input type="text" id="widthBase" name="widthBase" value="22">
-            </div>
-
-            <div class="input-group">
-                <label for="ten">bt:</label>
-                <input type="text" id="ten" name="ten" value="15">
-            </div>
-
-            <div class="input-group">
-                <label for="coneT">ct:</label>
-                <input type="text" id="coneT" name="coneT" value="3">
-            </div>
-
-            <div class="input-group">
-                <label for="maxSize">MaxSize parameters:</label>
-                <input type="text" id="maxSize" name="maxSize" value="3">
-            </div>
-
-            <div class="input-group">
-                <label for="minSize">MinSize parameters:</label>
-                <input type="text" id="minSize" name="minSize" value="0.5">
-            </div>
-
-            <div class="input-group">
-                <label for="endTime">endTime:</label>
-                <input type="text" id="endTime" name="endTime" value="25">
-            </div>
-
-            <div class="input-group">
-                <label for="deltaT">deltaT:</label>
-                <input type="text" id="deltaT" name="deltaT" value="0.05">
-            </div>
-
             <button type="submit">Установить параметры</button>
         </form>
 
