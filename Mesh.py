@@ -28,6 +28,8 @@ partSet = model.moduleDocument()
 ### Create Part
 Part_1 = model.addPart(partSet)
 Part_1_doc = Part_1.document()
+minSize: float = 0.5
+maxSize: float = 3
 with open(os.path.expanduser("~/Downloads/kurs_lyas/data.json"), "r") as file:
     data = json.load(file)
     model.addParameter(Part_1_doc, "heightS", data["heightS"])
@@ -38,6 +40,8 @@ with open(os.path.expanduser("~/Downloads/kurs_lyas/data.json"), "r") as file:
     model.addParameter(Part_1_doc, "triangle", data["triangle"])
     model.addParameter(Part_1_doc, "gap", data["gap"])
     model.addParameter(Part_1_doc, "distanceToTriangle", data["distanceToTriangle"])
+    minSize = data["minSize"]
+    maxSize = data["minSize"]
 
 ### Create Sketch
 Sketch_1 = model.addSketch(Part_1_doc, model.defaultPlane("XOY"))

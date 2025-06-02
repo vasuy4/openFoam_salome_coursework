@@ -46,6 +46,8 @@ async def calculate(
     widthBase: float = Form(...),
     ten: float = Form(...),
     coneT: float = Form(...),
+    minSize: float = Form(...),
+    maxSize: float = Form(...),
 ):
     result = {
         "U": U,
@@ -56,6 +58,8 @@ async def calculate(
         "widthBase": widthBase,
         "ten": ten,
         "coneT": coneT,
+        "minSize": minSize,
+        "maxSize": maxSize,
     }
 
     check_answer = check(*result.values())

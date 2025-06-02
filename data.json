@@ -6,5 +6,7 @@
   "angle": "11",
   "triangle": "6",
   "gap": "3",
-  "distanceToTriangle": "15"
+  "distanceToTriangle": "15",
+  "minSize": "0.5",
+  "maxSize": "3"
 }

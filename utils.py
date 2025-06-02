@@ -1,5 +1,7 @@
 from typing import  Tuple
 import re
+import json
+
 
 def check(
 	U: float,
@@ -10,6 +12,8 @@ def check(
 	widthBase: float,
 	ten: float,
 	coneT: float,
+	minSize: float,
+	maxSize: float,
 ) -> Tuple[bool, str]:
 	if U <= 0 or widthInput <= 0 or widthOutput <= 0 or sideTriangle <= 0 or lenCone <= 0 or widthBase <= 0 or ten <0 or coneT <0:
 		return False, "Все значения должны быть >0"
@@ -27,6 +31,20 @@ def check(
 	if sideTriangle >= lenCone:
 		return False, "t должно быть меньше L"
 
+	result = {
+		"heightS": widthInput,
+		"heightB": widthOutput,
+		"triangle": sideTriangle,
+		"widthL": lenCone,
+		"widthR": widthBase,
+		"distanceToTriangle": ten,
+		"gap": coneT,
+		"minSize": minSize,
+		"maxSize": maxSize,
+	}
+
+	with open('data.json', 'w') as file:
+		json.dump(result, file, indent=4)
 	change_inlet_velocity(U)
 	return True, "Параметры корректны. Запуск расчёта..."
 
