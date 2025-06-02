@@ -30,10 +30,10 @@ Part_1 = model.addPart(partSet)
 Part_1_doc = Part_1.document()
 minSize: float = 0.5
 maxSize: float = 3
-with open(os.path.expanduser("~/Downloads/kurs_lyas/data.json"), "r") as file:
+with open(os.path.expanduser("~/Downloads/artem/data.json"), "r") as file:
     data = json.load(file)
     model.addParameter(Part_1_doc, "heightS", data["heightS"])
-    model.addParameter(Part_1_doc, "heightB", data["heightS"])
+    model.addParameter(Part_1_doc, "heightB", data["heightB"])
     model.addParameter(Part_1_doc, "widthL", data["widthL"])
     model.addParameter(Part_1_doc, "widthR", data["widthR"])
     model.addParameter(Part_1_doc, "angle", data["angle"])
