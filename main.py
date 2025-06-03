@@ -66,11 +66,12 @@ async def calculate(
         "endTime": endTime,
         "deltaT": deltaT
     }
-
+    curant = U * deltaT / maxSize
+    print(curant)
     check_answer = check(*result.values())
     return templates.TemplateResponse(
         "index.html",
-        {"request": request, "information": check_answer[1], "is_correct": check_answer[0]}
+        {"request": request, "information": check_answer[1], "is_correct": check_answer[0], "curant": curant}
     )
 
 if __name__ == '__main__':
